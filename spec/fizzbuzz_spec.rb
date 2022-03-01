@@ -40,14 +40,22 @@ RSpec.describe FizzBuzz do
   end
 
   describe 'dry fizzbuzz' do
-    it 'replaces numbers divisible by 7 with bam'
+    it 'replaces numbers divisible by 7 with bam' do
+      expect(fizzbuzz.encode(7)).to eq('bam')
+      expect(fizzbuzz.encode(14)).to eq('bam')
+    end
 
-    it 'replaces numbers containing the digit 7 with bam'
+    it 'replaces numbers containing the digit 7 with bam' do
+      expect(fizzbuzz.encode(47)).to eq('bam')
+    end
 
     it 'replaces numbers divisible by 3 and 7 with fizzbam'
 
     it 'replaces numbers divisible by 5 and 7 with buzzbam'
 
-    it 'replaces numbers divisible by 3, 5 and 7 with fizzbuzzbam'
+    it 'replaces numbers divisible by 3, 5 and 7 with fizzbuzzbam' do
+      expect(fizzbuzz.encode(105)).to eq('fizzbuzzbam')
+      expect(fizzbuzz.encode(210)).to eq('fizzbuzzbam')
+    end
   end
 end
