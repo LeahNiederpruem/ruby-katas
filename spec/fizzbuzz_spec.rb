@@ -5,7 +5,7 @@ require 'fizzbuzz'
 RSpec.describe FizzBuzzGame do
   fizzbuzz = FizzBuzzGame.new
 
-  describe '#fizzbuzz' do
+  describe '#check_number' do
     it 'returns number if number is not divisible by 3 or 5' do
       expect(fizzbuzz.check_number(1)).to eq(1)
     end
