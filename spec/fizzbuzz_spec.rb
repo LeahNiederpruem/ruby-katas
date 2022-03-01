@@ -2,27 +2,52 @@
 
 require 'fizzbuzz'
 
-RSpec.describe FizzBuzzGame do
-  fizzbuzz = FizzBuzzGame.new
+RSpec.describe FizzBuzz do
+  subject(:fizzbuzz) { FizzBuzz.new }
 
-  describe '#fizzbuzz' do
-    it 'returns number if number is not divisible by 3 or 5' do
-      expect(fizzbuzz.check_number(1)).to eq(1)
-    end
+  it 'returns the given number' do
+    expect(fizzbuzz.encode(1)).to eq(1)
+    expect(fizzbuzz.encode(2)).to eq(2)
+  end
 
-    it 'checks if number is divisible by 3' do
-      expect(fizzbuzz.check_number(3)).to eq('fizz')
-      expect(fizzbuzz.check_number(6)).to eq('fizz')
-    end
+  it 'replaces numbers divisible by 3 with fizz' do
+    expect(fizzbuzz.encode(3)).to eq('fizz')
+    expect(fizzbuzz.encode(6)).to eq('fizz')
+  end
 
-    it 'checks if number is divisible by 5' do
-      expect(fizzbuzz.check_number(5)).to eq('buzz')
-      expect(fizzbuzz.check_number(10)).to eq('buzz')
-    end
+  it 'replaces numbers divisible by 5 with buzz' do
+    expect(fizzbuzz.encode(5)).to eq('buzz')
+    expect(fizzbuzz.encode(10)).to eq('buzz')
+  end
 
-    it 'checks if number is divisible by 3 and 5' do
-      expect(fizzbuzz.check_number(15)).to eq('fizzbuzz')
-      expect(fizzbuzz.check_number(30)).to eq('fizzbuzz')
-    end
+  it 'replaces numbers divisible by 3 AND 5 with fizzbuzz' do
+    expect(fizzbuzz.encode(15)).to eq('fizzbuzz')
+    expect(fizzbuzz.encode(30)).to eq('fizzbuzz')
+  end
+
+  it 'replaces numbers containing the digit 3 with fizz' do
+    expect(fizzbuzz.encode(13)).to eq('fizz')
+    expect(fizzbuzz.encode(32)).to eq('fizz')
+  end
+
+  it 'replaces numbers containing the digit 5 with buzz' do
+    expect(fizzbuzz.encode(52)).to eq('buzz')
+    expect(fizzbuzz.encode(58)).to eq('buzz')
+  end
+
+  it 'replaces numbers containing the digit 5 AND 3 with fizzbuzz' do
+    expect(fizzbuzz.encode(53)).to eq('fizzbuzz')
+  end
+
+  describe 'dry fizzbuzz' do
+    it 'replaces numbers divisible by 7 with bam'
+
+    it 'replaces numbers containing the digit 7 with bam'
+
+    it 'replaces numbers divisible by 3 and 7 with fizzbam'
+
+    it 'replaces numbers divisible by 5 and 7 with buzzbam'
+
+    it 'replaces numbers divisible by 3, 5 and 7 with fizzbuzzbam'
   end
 end
