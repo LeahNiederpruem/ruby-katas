@@ -1,1 +1,1 @@
-# fizzbuzz-dojo
+## FizzBuzz Dojo
