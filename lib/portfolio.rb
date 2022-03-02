@@ -9,11 +9,11 @@ class StockPortfolio
     portfolio
   end
 
-  def get_stocks_count
+  def stocks_count
     portfolio_content.length
   end
 
-  def get_shares_count(company)
+  def shares_count(company)
     portfolio_content[company.to_sym]
   end
 

@@ -21,12 +21,12 @@ RSpec.describe StockPortfolio do
     end
 
     it 'returns stock count in portfolio' do
-      expect(portfolio.get_stocks_count).to eq(3)
+      expect(portfolio.stocks_count).to eq(3)
     end
 
     it 'returns shares count of specific stock' do
-      expect(portfolio.get_shares_count('AAPL')).to eq(1)
-      expect(portfolio.get_shares_count('IBM')).to eq(12)
+      expect(portfolio.shares_count('AAPL')).to eq(1)
+      expect(portfolio.shares_count('IBM')).to eq(12)
     end
 
     it 'increases the shares by given number of specified stock' do
