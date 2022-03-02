@@ -13,18 +13,18 @@ class StockPortfolio
     portfolio_content.length
   end
 
-  def shares_count(company)
-    portfolio_content[company.to_sym]
+  def shares_count(stock)
+    portfolio_content[stock.to_sym]
   end
 
-  def buy_shares(company, shares)
-    portfolio_content[company.to_sym] = portfolio_content[company.to_sym] + shares
+  def buy_shares(stock, shares)
+    portfolio_content[stock.to_sym] = portfolio_content[stock.to_sym] + shares
 
     portfolio_content
   end
 
-  def sell_shares(company, shares)
-    portfolio_content[company.to_sym] = portfolio_content[company.to_sym] - shares
+  def sell_shares(stock, shares)
+    portfolio_content[stock.to_sym] = portfolio_content[stock.to_sym] - shares
 
     portfolio_content
   end
