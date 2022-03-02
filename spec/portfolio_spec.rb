@@ -20,6 +20,10 @@ RSpec.describe StockPortfolio do
       described_class.new({ IBM: 12, AAPL: 1, TSLA: 5 })
     end
 
+    it 'returns stock count in portfolio' do
+      expect(portfolio.get_stocks_count).to eq(3)
+    end
+
     it 'returns shares count of specific stock' do
       expect(portfolio.get_shares_count('AAPL')).to eq(1)
       expect(portfolio.get_shares_count('IBM')).to eq(12)
