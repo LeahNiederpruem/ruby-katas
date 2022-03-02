@@ -26,6 +26,8 @@ class StockPortfolio
   def sell_shares(stock, shares)
     portfolio_content[stock.to_sym] = portfolio_content[stock.to_sym] - shares
 
+    return 'You do not have that many shares to sell.' if portfolio_content[stock.to_sym].negative?
+
     portfolio_content
   end
 

@@ -37,5 +37,9 @@ RSpec.describe StockPortfolio do
     it 'decreases the shares by given number of specified stock (sell)' do
       expect(portfolio.sell_shares('IBM', 2)).to eq({ IBM: 10, AAPL: 1, TSLA: 5 })
     end
+
+    it 'returns an error if shares of stock is negative' do
+      expect(portfolio.sell_shares('AAPL', 2)).to eq('You do not have that many shares to sell.')
+    end
   end
 end
