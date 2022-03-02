@@ -9,8 +9,14 @@ class StockPortfolio
     portfolio
   end
 
-  def get_stock_count(stock)
-    portfolio_content[stock.to_sym]
+  def get_shares_count(company)
+    portfolio_content[company.to_sym]
+  end
+
+  def buy_shares(company, shares)
+    portfolio_content[company.to_sym] = portfolio_content[company.to_sym] + shares
+
+    portfolio_content
   end
 
   attr_reader :portfolio_content
