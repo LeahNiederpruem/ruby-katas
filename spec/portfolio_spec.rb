@@ -5,15 +5,24 @@ require 'portfolio'
 RSpec.describe StockPortfolio do
   subject(:portfolio) { described_class.new }
 
-  empty_portfolio = {}
+  context 'with empty portfolio' do
+    let(:portfolio) do
+      described_class.new({})
+    end
 
-  filled_portfolio = { IBM: 12, AAPL: 1 }
-
-  it 'checks if portfolio is empty' do
-    expect(portfolio.check_portfolio(empty_portfolio)).to eq(empty_portfolio)
+    it 'checks if portfolio is empty' do
+      expect(portfolio.check_portfolio({})).to eq({})
+    end
   end
 
-  it 'checks if portfolio is NOT empty' do
-    expect(portfolio.check_portfolio(filled_portfolio)).to eq(filled_portfolio)
+  context 'with a filled portfolio' do
+    let(:portfolio) do
+      described_class.new({ IBM: 12, AAPL: 1 })
+    end
+
+    it 'returns stock count of specific stock' do
+      expect(portfolio.get_stock_count('AAPL')).to eq(1)
+      expect(portfolio.get_stock_count('IBM')).to eq(12)
+    end
   end
 end
