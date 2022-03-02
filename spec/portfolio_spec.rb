@@ -27,6 +27,8 @@ RSpec.describe StockPortfolio do
     it 'returns shares count of specific stock' do
       expect(portfolio.shares_count('AAPL')).to eq(1)
       expect(portfolio.shares_count('IBM')).to eq(12)
+
+      expect(portfolio.shares_count('GOOG')).to eq(0)
     end
 
     it 'increases the shares by given number of specified stock (buy)' do
@@ -38,7 +40,7 @@ RSpec.describe StockPortfolio do
       expect(portfolio.sell_shares('IBM', 2)).to eq({ IBM: 10, AAPL: 1, TSLA: 5 })
     end
 
-    it 'returns an error if shares of stock is negative' do
+    it 'returns an error if #shares is negative' do
       expect(portfolio.sell_shares('AAPL', 2)).to eq('You do not have that many shares to sell.')
     end
   end

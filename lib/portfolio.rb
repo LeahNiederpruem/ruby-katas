@@ -14,6 +14,8 @@ class StockPortfolio
   end
 
   def shares_count(stock)
+    return 0 if portfolio_content[stock.to_sym].nil?
+
     portfolio_content[stock.to_sym]
   end
 
