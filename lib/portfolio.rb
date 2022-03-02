@@ -23,5 +23,11 @@ class StockPortfolio
     portfolio_content
   end
 
+  def sell_shares(company, shares)
+    portfolio_content[company.to_sym] = portfolio_content[company.to_sym] - shares
+
+    portfolio_content
+  end
+
   attr_reader :portfolio_content
 end
