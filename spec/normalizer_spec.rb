@@ -26,4 +26,10 @@ RSpec.describe NameNormalizer do
 
     expect(normalizer.normalize('   Linus   ', 'Torvalds  ')).to eq('Torvalds, Linus')
   end
+
+  it 'initializes the middle name' do
+    normalizer = NameNormalizer.new
+
+    expect(normalizer.normalize('Linus', 'Torvalds', 'Benedict')).to eq('Torvalds, Linus B.')
+  end
 end
