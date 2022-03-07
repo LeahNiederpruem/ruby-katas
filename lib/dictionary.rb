@@ -6,11 +6,15 @@ class Dictionary
   end
 
   def get_definition(word)
-    content[word].first
+    content[word]
   end
 
   def add(word, definition)
     content[word] = definition
+  end
+
+  def count(word)
+    content[word].count
   end
 
   def empty?
