@@ -17,6 +17,11 @@ class Dictionary
     content.keys.size
   end
 
+  def total_definitions
+    p content.values.flatten
+    content.values.flatten.size
+  end
+
   def empty?
     content.empty?
   end

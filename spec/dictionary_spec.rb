@@ -37,4 +37,14 @@ RSpec.describe Dictionary do
 
     expect(dictionary.total_words).to eq(3)
   end
+
+  it 'gets total # of definitions' do
+    dictionary = Dictionary.new
+
+    dictionary.add('Dog', ['Good Boyy'])
+    dictionary.add('Bird', ['some definition', 'birb'])
+    dictionary.add('Duck', ['Ducks r cool'])
+
+    expect(dictionary.total_definitions).to eq(4)
+  end
 end
