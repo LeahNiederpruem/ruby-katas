@@ -4,6 +4,6 @@ class NameNormalizer
   def normalize(name, surname)
     return name if surname.empty?
 
-    "#{surname}, #{name}"
+    "#{surname.strip}, #{name.strip}"
   end
 end

@@ -20,4 +20,10 @@ RSpec.describe NameNormalizer do
 
     expect(normalizer.normalize('Linus', 'Torvalds')).to eq('Torvalds, Linus')
   end
+
+  it 'trims leading and trailing whitespace' do
+    normalizer = NameNormalizer.new
+
+    expect(normalizer.normalize('   Linus   ', 'Torvalds  ')).to eq('Torvalds, Linus')
+  end
 end
