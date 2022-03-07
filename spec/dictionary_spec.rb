@@ -48,6 +48,6 @@ RSpec.describe Dictionary do
   it 'returns an error when storing nil key' do
     dictionary = Dictionary.new
 
-    expect(dictionary.add('', '')).to eq(nil)
+    expect { dictionary.add('', '') }.to raise_error('Cannot store nil value')
   end
 end

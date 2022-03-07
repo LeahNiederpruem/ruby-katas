@@ -10,7 +10,7 @@ class Dictionary
   end
 
   def add(word, definition)
-    return if word.empty?
+    raise 'Cannot store nil value' if word.empty?
 
     content[word] = definition
   end
