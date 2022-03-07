@@ -2,7 +2,7 @@
 
 class Dictionary
   def initialize
-    @content = {}
+    @content = Hash.new(0)
   end
 
   def get_definition(word)
@@ -13,8 +13,8 @@ class Dictionary
     content[word] = definition
   end
 
-  def count(word)
-    content[word].count
+  def total_words
+    content.keys.size
   end
 
   def empty?

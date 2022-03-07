@@ -28,13 +28,13 @@ RSpec.describe Dictionary do
                                                     'It is time to take the dog for a walk.'])
   end
 
-  it 'gets # of definitions' do
+  it 'gets # of words' do
     dictionary = Dictionary.new
 
-    dictionary.add('Bird',
-                   ['a two-legged feathered creature, with a beak and two wings, with which most can fly',
-                    'a bird’s nest'])
+    dictionary.add('Dog', '')
+    dictionary.add('Bird', '')
+    dictionary.add('Monkey', '')
 
-    expect(dictionary.count('Bird')).to eq(2)
+    expect(dictionary.total_words).to eq(3)
   end
 end
