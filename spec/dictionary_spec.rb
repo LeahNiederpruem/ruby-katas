@@ -12,7 +12,7 @@ RSpec.describe Dictionary do
   it 'is not empty after adding word and definition' do
     dictionary = Dictionary.new
 
-    dictionary.add('Dog', ['a domestic, meat-eating animal related to the wolf and fox'])
+    dictionary.add('Dog', [])
 
     expect(dictionary).not_to be_empty
   end
@@ -28,9 +28,9 @@ RSpec.describe Dictionary do
   it 'gets # of words' do
     dictionary = Dictionary.new
 
-    dictionary.add('Dog', '')
-    dictionary.add('Bird', '')
-    dictionary.add('Duck', '')
+    dictionary.add('Dog', [])
+    dictionary.add('Bird', [])
+    dictionary.add('Duck', [])
 
     expect(dictionary.total_words).to eq(3)
   end
