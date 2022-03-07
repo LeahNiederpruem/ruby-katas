@@ -10,6 +10,8 @@ class Dictionary
   end
 
   def add(word, definition)
+    return if word.empty?
+
     content[word] = definition
   end
 
@@ -18,7 +20,6 @@ class Dictionary
   end
 
   def total_definitions
-    p content.values.flatten
     content.values.flatten.size
   end
 

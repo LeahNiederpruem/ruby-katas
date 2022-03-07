@@ -20,12 +20,9 @@ RSpec.describe Dictionary do
   it 'gets the definitions of a word' do
     dictionary = Dictionary.new
 
-    dictionary.add('Dog',
-                   ['a domestic, meat-eating animal related to the wolf and fox',
-                    'It is time to take the dog for a walk.'])
+    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
 
-    expect(dictionary.get_definition('Dog')).to eq(['a domestic, meat-eating animal related to the wolf and fox',
-                                                    'It is time to take the dog for a walk.'])
+    expect(dictionary.get_definition('Dog')).to eq(['Definition 1', 'Definition 2'])
   end
 
   it 'gets # of words' do
@@ -33,7 +30,7 @@ RSpec.describe Dictionary do
 
     dictionary.add('Dog', '')
     dictionary.add('Bird', '')
-    dictionary.add('Monkey', '')
+    dictionary.add('Duck', '')
 
     expect(dictionary.total_words).to eq(3)
   end
@@ -46,5 +43,11 @@ RSpec.describe Dictionary do
     dictionary.add('Duck', ['Ducks r cool'])
 
     expect(dictionary.total_definitions).to eq(4)
+  end
+
+  it 'returns an error when storing nil key' do
+    dictionary = Dictionary.new
+
+    expect(dictionary.add('', '')).to eq(nil)
   end
 end
