@@ -14,4 +14,10 @@ RSpec.describe NameNormalizer do
 
     expect(normalizer.normalize('Linus', '')).to eq('Linus')
   end
+
+  it 'swaps the name and surname' do
+    normalizer = NameNormalizer.new
+
+    expect(normalizer.normalize('Linus', 'Torvalds')).to eq('Torvalds, Linus')
+  end
 end
