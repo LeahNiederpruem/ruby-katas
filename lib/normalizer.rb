@@ -2,10 +2,14 @@
 
 class NameNormalizer
   def normalize(name, surname, middlename = '')
-    return name.strip if surname.empty?
+    name = name.strip
+    surname = surname.strip
+    middlename = middlename.strip
 
-    return "#{surname.strip}, #{name.strip}" if middlename.empty?
+    return name if surname.empty?
 
-    "#{surname.strip}, #{name.strip} #{middlename.strip[0]}."
+    return "#{surname}, #{name}" if middlename.empty?
+
+    "#{surname}, #{name} #{middlename[0]}."
   end
 end
