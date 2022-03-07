@@ -6,10 +6,14 @@ class Dictionary
   end
 
   def add(symbol, definition)
-    @content[symbol] = definition
+    content[symbol] = definition
   end
 
   def empty?
-    @content.empty?
+    content.empty?
   end
+
+  private
+
+  attr_reader :content
 end
