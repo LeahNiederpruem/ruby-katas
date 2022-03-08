@@ -2,17 +2,21 @@
 
 class Dictionary
   def initialize
-    @content = Hash.new(0)
+    @content = {}
   end
 
   def definition(word)
-    content[word]
+    content[word].flatten
   end
 
   def add(word, definition)
-    raise 'Cannot store nil value' if word.empty?
+    raise 'Cannot store empty string' if word.empty?
 
     content[word] = definition
+  end
+
+  def append(word, definition)
+    content[word].append(definition)
   end
 
   def total_words

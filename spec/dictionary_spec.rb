@@ -25,6 +25,15 @@ RSpec.describe Dictionary do
     expect(dictionary.definition('Dog')).to eq(['Definition 1', 'Definition 2'])
   end
 
+  it 'appends a new definition to existing entry' do
+    dictionary = Dictionary.new
+
+    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
+    dictionary.append('Dog', ['Definition 3'])
+
+    expect(dictionary.definition('Dog')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
+  end
+
   it 'gets # of words' do
     dictionary = Dictionary.new
 
@@ -48,6 +57,6 @@ RSpec.describe Dictionary do
   it 'returns an error when storing nil key' do
     dictionary = Dictionary.new
 
-    expect { dictionary.add('', '') }.to raise_error('Cannot store nil value')
+    expect { dictionary.add('', '') }.to raise_error('Cannot store empty string')
   end
 end
