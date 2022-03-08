@@ -17,13 +17,22 @@ RSpec.describe Dictionary do
     expect(dictionary).not_to be_empty
   end
 
-  it 'deletes a word and the related definitions' do
+  it 'deletes given word and the related definitions' do
     dictionary = Dictionary.new
 
     dictionary.add('Dog', ['Nice!'])
-    dictionary.delete('Dog')
+    dictionary.delete_word('Dog')
 
     expect(dictionary.definition('Dog')).to eq(nil)
+  end
+
+  it 'deletes a definition of a given word' do
+    dictionary = Dictionary.new
+
+    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
+    dictionary.delete_definition('Dog', 'Definition 2')
+
+    expect(dictionary.definition('Dog')).to eq(['Definition 1'])
   end
 
   it 'gets the definitions of a word' do
@@ -61,6 +70,12 @@ RSpec.describe Dictionary do
     dictionary.add('Duck', ['Ducks r cool'])
 
     expect(dictionary.total_definitions).to eq(4)
+  end
+
+  it 'returns nil when asking for non existent word' do
+    dictionary = Dictionary.new
+
+    expect(dictionary.definition('Dog')).to eq(nil)
   end
 
   it 'returns an error when storing nil key' do

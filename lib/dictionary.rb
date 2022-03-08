@@ -15,8 +15,12 @@ class Dictionary
     content[word] = definition
   end
 
-  def delete(word)
+  def delete_word(word)
     content.delete(word)
+  end
+
+  def delete_definition(word, definition)
+    content[word].delete(definition)
   end
 
   def append(word, definition)
