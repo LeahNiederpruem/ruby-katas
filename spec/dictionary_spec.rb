@@ -17,6 +17,15 @@ RSpec.describe Dictionary do
     expect(dictionary).not_to be_empty
   end
 
+  it 'deletes a word and the related definitions' do
+    dictionary = Dictionary.new
+
+    dictionary.add('Dog', ['Nice!'])
+    dictionary.delete('Dog')
+
+    expect(dictionary.definition('Dog')).to eq(nil)
+  end
+
   it 'gets the definitions of a word' do
     dictionary = Dictionary.new
 

@@ -6,13 +6,17 @@ class Dictionary
   end
 
   def definition(word)
-    content[word].flatten
+    content[word]&.flatten
   end
 
   def add(word, definition)
     raise 'Cannot store empty string' if word.empty?
 
     content[word] = definition
+  end
+
+  def delete(word)
+    content.delete(word)
   end
 
   def append(word, definition)
