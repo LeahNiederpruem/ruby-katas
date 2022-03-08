@@ -5,7 +5,7 @@ class Dictionary
     @content = Hash.new(0)
   end
 
-  def get_definition(word)
+  def definition(word)
     content[word]
   end
 

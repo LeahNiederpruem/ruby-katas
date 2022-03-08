@@ -22,7 +22,7 @@ RSpec.describe Dictionary do
 
     dictionary.add('Dog', ['Definition 1', 'Definition 2'])
 
-    expect(dictionary.get_definition('Dog')).to eq(['Definition 1', 'Definition 2'])
+    expect(dictionary.definition('Dog')).to eq(['Definition 1', 'Definition 2'])
   end
 
   it 'gets # of words' do
