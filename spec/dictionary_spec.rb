@@ -20,7 +20,7 @@ RSpec.describe Dictionary do
   it 'deletes given word and the related definitions' do
     dictionary = Dictionary.new
 
-    dictionary.add('Dog', ['Nice!'])
+    dictionary.add('Dog', ['Definition 1'])
     dictionary.delete_word('Dog')
 
     expect(dictionary.definition('Dog')).to eq(nil)
@@ -65,9 +65,9 @@ RSpec.describe Dictionary do
   it 'gets total # of definitions' do
     dictionary = Dictionary.new
 
-    dictionary.add('Dog', ['Good Boyy'])
-    dictionary.add('Bird', ['some definition', 'birb'])
-    dictionary.add('Duck', ['Ducks r cool'])
+    dictionary.add('Dog', ['Definition 1'])
+    dictionary.add('Bird', ['Definition 2', 'Definition 3'])
+    dictionary.add('Duck', ['Definition 4'])
 
     expect(dictionary.total_definitions).to eq(4)
   end
