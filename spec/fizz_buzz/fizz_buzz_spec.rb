@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'fizzbuzz'
+require './lib/fizz_buzz/fizz_buzz'
 
 RSpec.describe FizzBuzz do
   subject(:fizzbuzz) { FizzBuzz.new }
