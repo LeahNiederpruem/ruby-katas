@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dictionary'
+require './lib/dictionary/dictionary'
 
 RSpec.describe Dictionary do
   it 'is initial empty' do
