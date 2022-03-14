@@ -10,10 +10,14 @@ class Dictionary
   end
 
   def add(word)
-    @content[word] = ''
+    content[word] = ''
   end
 
   def empty?
-    @content.empty?
+    content.empty?
   end
+
+  private
+
+  attr_reader :content
 end
