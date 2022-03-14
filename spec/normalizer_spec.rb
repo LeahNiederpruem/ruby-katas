@@ -4,7 +4,7 @@ require 'normalizer'
 
 RSpec.describe NameNormalizer do
   it 'returns empty string given an empty string' do
-    normalizer = NameNormalizer.new
+    normalizer = NameNormalizer.new('')
 
     expect(normalizer.normalize).to eq('')
   end
@@ -31,5 +31,11 @@ RSpec.describe NameNormalizer do
     normalizer = NameNormalizer.new('Linus', 'Torvalds', 'Benedict')
 
     expect(normalizer.normalize).to eq('Torvalds, Linus B.')
+  end
+
+  it 'adds the suffix' do
+    normalizer = NameNormalizer.new('Linus', 'Torvalds', 'Benedict', 'Jr.')
+
+    expect(normalizer.normalize).to eq('Torvalds, Linus B., Jr.')
   end
 end
