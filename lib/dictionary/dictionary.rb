@@ -37,6 +37,10 @@ class Dictionary
     content.keys.size
   end
 
+  def total_number_of_definitions
+    content.values.flatten.size
+  end
+
   private
 
   attr_reader :content

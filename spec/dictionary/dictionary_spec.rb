@@ -60,4 +60,12 @@ RSpec.describe Dictionary do
 
     expect(dictionary.total_number_of_words).to eq(3)
   end
+
+  it 'gets total # of definitions' do
+    dictionary.add('Door', ['Definition 1'])
+    dictionary.add('Bell', ['Definition 2', 'Definition 3'])
+    dictionary.add('Table', ['Definition 4'])
+
+    expect(dictionary.total_number_of_definitions).to eq(4)
+  end
 end
