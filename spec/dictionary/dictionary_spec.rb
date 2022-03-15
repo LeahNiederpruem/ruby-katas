@@ -52,4 +52,12 @@ RSpec.describe Dictionary do
 
     expect(dictionary.delete_definition('Door', 'Definition 2')).to eq(['Definition 1'])
   end
+
+  it 'gets total # of words' do
+    dictionary.add('Door')
+    dictionary.add('Bell')
+    dictionary.add('Table')
+
+    expect(dictionary.total_number_of_words).to eq(3)
+  end
 end

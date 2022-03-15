@@ -33,6 +33,10 @@ class Dictionary
     content[word]
   end
 
+  def total_number_of_words
+    content.keys.size
+  end
+
   private
 
   attr_reader :content
