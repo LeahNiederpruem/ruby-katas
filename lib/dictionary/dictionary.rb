@@ -14,11 +14,7 @@ class Dictionary
 
     return content[word] = [definition].flatten if content[word].nil?
 
-    append(word, definition)
-  end
-
-  def append(word, definitions)
-    content[word].append(definitions)
+    content[word].append(definition)
   end
 
   def empty?
@@ -43,7 +39,7 @@ class Dictionary
     content.values.flatten.size
   end
 
-  def count_definitions(word)
+  def count_definitions_of_word(word)
     content[word].size
   end
 
