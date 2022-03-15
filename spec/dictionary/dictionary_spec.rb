@@ -5,7 +5,7 @@ require './lib/dictionary/dictionary'
 RSpec.describe Dictionary do
   subject(:dictionary) { described_class.new }
 
-  it 'checks if dictionary is initial empty' do
+  it 'is initial empty' do
     expect(dictionary).to be_empty
   end
 
