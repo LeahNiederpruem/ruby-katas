@@ -41,6 +41,10 @@ class Dictionary
     content.values.flatten.size
   end
 
+  def count_definitions(word)
+    content[word].size
+  end
+
   private
 
   attr_reader :content

@@ -68,4 +68,10 @@ RSpec.describe Dictionary do
 
     expect(dictionary.total_number_of_definitions).to eq(4)
   end
+
+  it 'gets # of definitions related to a word' do
+    dictionary.add('Bell', ['Definition 1', 'Definition 2', 'Definition 3'])
+
+    expect(dictionary.count_definitions('Bell')).to eq(3)
+  end
 end
