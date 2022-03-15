@@ -9,13 +9,15 @@ RSpec.describe Dictionary do
     expect(dictionary).to be_empty
   end
 
-  it 'adds a word to the dictionary' do
+  it 'is not empty after adding a word' do
     dictionary.add('Table')
 
     expect(dictionary).not_to be_empty
   end
 
-  it 'returns a word' do
-    expect(dictionary.word('Table')).to eq('Table')
+  it 'adds a word to the dictionary' do
+    dictionary.add('Carpet', 'a floor covering made from thick woven fabric.')
+
+    expect(dictionary.definition('Carpet')).to eq('a floor covering made from thick woven fabric.')
   end
 end
