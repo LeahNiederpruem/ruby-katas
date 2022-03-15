@@ -10,6 +10,8 @@ class Dictionary
   end
 
   def add(word, definition = [])
+    raise StandardError, 'Cannot store empty string or nil' if word.empty?
+
     return content[word] = definition if content[word].nil?
 
     append(word, definition)

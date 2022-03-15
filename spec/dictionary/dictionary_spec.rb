@@ -74,4 +74,12 @@ RSpec.describe Dictionary do
 
     expect(dictionary.count_definitions('Bell')).to eq(3)
   end
+
+  it 'throws an error when attempting to store empty string' do
+    expect { dictionary.add('') }.to raise_error(StandardError)
+  end
+
+  it 'throws an error when attempting to store nil' do
+    expect { dictionary.add(nil) }.to raise_error(StandardError)
+  end
 end
