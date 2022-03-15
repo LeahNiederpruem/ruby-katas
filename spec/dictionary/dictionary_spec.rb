@@ -16,7 +16,7 @@ RSpec.describe Dictionary do
   end
 
   it 'adds a word with one definition' do
-    dictionary.add('Carpet', ['Definition 1'])
+    dictionary.add('Carpet', 'Definition 1')
 
     expect(dictionary.definitions('Carpet')).to eq(['Definition 1'])
   end

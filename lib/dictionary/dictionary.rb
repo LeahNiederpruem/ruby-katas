@@ -12,13 +12,13 @@ class Dictionary
   def add(word, definition = [])
     raise StandardError, 'Cannot store empty string or nil' if word.empty?
 
-    return content[word] = definition if content[word].nil?
+    return content[word] = [definition].flatten if content[word].nil?
 
     append(word, definition)
   end
 
   def append(word, definitions)
-    content[word].append(definitions).flatten
+    content[word].append(definitions)
   end
 
   def empty?
