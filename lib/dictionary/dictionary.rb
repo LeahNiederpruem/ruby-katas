@@ -23,6 +23,10 @@ class Dictionary
     content.empty?
   end
 
+  def delete_word(word)
+    content.delete(word)
+  end
+
   private
 
   attr_reader :content

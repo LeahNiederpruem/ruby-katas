@@ -40,4 +40,10 @@ RSpec.describe Dictionary do
 
     expect(dictionary.definitions('Door')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
   end
+
+  it 'deletes a word and the related definitions' do
+    dictionary.add('Door', ['Definition 1', 'Definition 2'])
+
+    expect(dictionary.delete_word('Door')).to be_truthy
+  end
 end
