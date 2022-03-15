@@ -1,1 +1,1 @@
-## Just a collection of various ruby katas
+## A collection of various ruby katas
