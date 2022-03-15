@@ -10,11 +10,13 @@ class Dictionary
   end
 
   def add(word, definition = [])
-    content[word] = definition
+    return content[word] = definition if content[word].nil?
+
+    append(word, definition)
   end
 
   def append(word, definitions)
-    content[word].append(definitions)
+    content[word].append(definitions).flatten
   end
 
   def empty?

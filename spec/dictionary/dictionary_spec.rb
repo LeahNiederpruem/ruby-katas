@@ -27,14 +27,14 @@ RSpec.describe Dictionary do
     expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2'])
   end
 
-  xit 'prevents overwriting of definitions' do
+  it 'prevents overwriting of definitions' do
     dictionary.add('Carpet', ['Definition 1', 'Definition 2'])
-    dictionary.add('Carpet', ['Definition 3'])
+    dictionary.add('Carpet', 'Definition 3')
 
     expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
   end
 
-  it 'appends a new definition to existin entry' do
+  it 'appends a new definition to existing entry' do
     dictionary.add('Door', ['Definition 1', 'Definition 2'])
     dictionary.append('Door', 'Definition 3')
 
