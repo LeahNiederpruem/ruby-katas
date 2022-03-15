@@ -27,6 +27,12 @@ class Dictionary
     content.delete(word)
   end
 
+  def delete_definition(word, definition)
+    content[word].delete(definition)
+
+    content[word]
+  end
+
   private
 
   attr_reader :content

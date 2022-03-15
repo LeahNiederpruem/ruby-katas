@@ -46,4 +46,10 @@ RSpec.describe Dictionary do
 
     expect(dictionary.delete_word('Door')).to be_truthy
   end
+
+  it 'deletes a definition to the related word' do
+    dictionary.add('Door', ['Definition 1', 'Definition 2'])
+
+    expect(dictionary.delete_definition('Door', 'Definition 2')).to eq(['Definition 1'])
+  end
 end
