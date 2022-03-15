@@ -9,12 +9,12 @@ class Dictionary
     content[word]
   end
 
-  def add(word, definition = '')
+  def add(word, definition = [])
     content[word] = definition
   end
 
-  def add_definitions(word, definitions)
-    content[word] = definitions
+  def append(word, definitions)
+    content[word].append(definitions)
   end
 
   def empty?

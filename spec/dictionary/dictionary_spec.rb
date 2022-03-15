@@ -16,14 +16,28 @@ RSpec.describe Dictionary do
   end
 
   it 'adds a word with one definition' do
-    dictionary.add('Carpet', 'Definition 1')
+    dictionary.add('Carpet', ['Definition 1'])
 
-    expect(dictionary.definitions('Carpet')).to eq('Definition 1')
+    expect(dictionary.definitions('Carpet')).to eq(['Definition 1'])
   end
 
   it 'adds a word with multiple definitions' do
-    dictionary.add_definitions('Carpet', ['Definition 1', 'Definition 2'])
+    dictionary.add('Carpet', ['Definition 1', 'Definition 2'])
 
     expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2'])
+  end
+
+  xit 'prevents overwriting of definitions' do
+    dictionary.add('Carpet', ['Definition 1', 'Definition 2'])
+    dictionary.add('Carpet', ['Definition 3'])
+
+    expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
+  end
+
+  it 'appends a new definition to existin entry' do
+    dictionary.add('Door', ['Definition 1', 'Definition 2'])
+    dictionary.append('Door', 'Definition 3')
+
+    expect(dictionary.definitions('Door')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
   end
 end
