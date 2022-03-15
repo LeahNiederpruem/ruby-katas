@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-class EmptyWordError < StandardError
-end
-
 class Dictionary
   def initialize
     @content = {}
@@ -13,7 +10,7 @@ class Dictionary
   end
 
   def add(word, definition = [])
-    raise EmptyWordError, 'Cannot store empty string or nil' if word.empty?
+    raise StandardError, 'Cannot store empty string or nil' if word.empty?
 
     return content[word] = [definition].flatten if content[word].nil?
 
@@ -28,11 +25,11 @@ class Dictionary
     content.empty?
   end
 
-  def delete_word(word)
+  def delete(word)
     content.delete(word)
   end
 
-  def delete_definition(word, definition)
+  def remove_definition(word, definition)
     content[word].delete(definition)
 
     content[word]

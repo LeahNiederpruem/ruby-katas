@@ -44,13 +44,13 @@ RSpec.describe Dictionary do
   it 'deletes a word and the related definitions' do
     dictionary.add('Door', ['Definition 1', 'Definition 2'])
 
-    expect(dictionary.delete_word('Door')).to be_truthy
+    expect(dictionary.delete('Door')).to be_truthy
   end
 
   it 'deletes a definition to the related word' do
     dictionary.add('Door', ['Definition 1', 'Definition 2'])
 
-    expect(dictionary.delete_definition('Door', 'Definition 2')).to eq(['Definition 1'])
+    expect(dictionary.remove_definition('Door', 'Definition 2')).to eq(['Definition 1'])
   end
 
   it 'gets total # of words' do
