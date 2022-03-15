@@ -3,84 +3,95 @@
 require './lib/dictionary/dictionary'
 
 RSpec.describe Dictionary do
-  it 'is initial empty' do
-    dictionary = Dictionary.new
+  subject(:dictionary) { described_class.new }
 
+  it 'is initial empty' do
     expect(dictionary).to be_empty
   end
 
-  it 'is not empty after adding word and definition' do
-    dictionary = Dictionary.new
-
-    dictionary.add('Dog', [])
+  it 'is not empty after adding a word' do
+    dictionary.add('Table')
 
     expect(dictionary).not_to be_empty
   end
 
-  it 'deletes given word and the related definitions' do
-    dictionary = Dictionary.new
+  describe '#add' do
+    it 'adds a word with one definition' do
+      dictionary.add('Carpet', 'Definition 1')
 
-    dictionary.add('Dog', ['Definition 1'])
-    dictionary.delete_word('Dog')
+      expect(dictionary.definitions('Carpet')).to eq(['Definition 1'])
+    end
 
-    expect(dictionary.definition('Dog')).to eq(nil)
+    it 'adds a word with multiple definitions' do
+      dictionary.add('Carpet', ['Definition 1', 'Definition 2'])
+
+      expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2'])
+    end
+
+    it 'prevents overwriting of definitions' do
+      dictionary.add('Carpet', ['Definition 1', 'Definition 2'])
+      dictionary.add('Carpet', 'Definition 3')
+
+      expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
+    end
+
+    it 'appends a new definition to existing entry' do
+      dictionary.add('Door', ['Definition 1', 'Definition 2'])
+      dictionary.add('Door', 'Definition 3')
+
+      expect(dictionary.definitions('Door')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
+    end
+
+    it 'throws an error when attempting to store empty string' do
+      expect { dictionary.add('') }.to raise_error(EmptyWordError)
+    end
+
+    it 'throws an error when attempting to store nil' do
+      expect { dictionary.add(nil) }.to raise_error(NoMethodError)
+    end
   end
 
-  it 'deletes a definition of a given word' do
-    dictionary = Dictionary.new
+  describe '#delete' do
+    it 'deletes a word and the related definitions' do
+      dictionary.add('Door', ['Definition 1', 'Definition 2'])
 
-    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
-    dictionary.delete_definition('Dog', 'Definition 2')
-
-    expect(dictionary.definition('Dog')).to eq(['Definition 1'])
+      expect(dictionary.delete('Door')).to be_truthy
+    end
   end
 
-  it 'gets the definitions of a word' do
-    dictionary = Dictionary.new
+  describe '#remove_definition' do
+    it 'deletes a definition to the related word' do
+      dictionary.add('Door', ['Definition 1', 'Definition 2'])
 
-    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
-
-    expect(dictionary.definition('Dog')).to eq(['Definition 1', 'Definition 2'])
+      expect(dictionary.remove_definition('Door', 'Definition 2')).to eq(['Definition 1'])
+    end
   end
 
-  it 'appends a new definition to existing entry' do
-    dictionary = Dictionary.new
+  describe '#total_number_of_words' do
+    it 'gets total # of words' do
+      dictionary.add('Door')
+      dictionary.add('Bell')
+      dictionary.add('Table')
 
-    dictionary.add('Dog', ['Definition 1', 'Definition 2'])
-    dictionary.append('Dog', ['Definition 3'])
-
-    expect(dictionary.definition('Dog')).to eq(['Definition 1', 'Definition 2', 'Definition 3'])
+      expect(dictionary.total_number_of_words).to eq(3)
+    end
   end
 
-  it 'gets # of words' do
-    dictionary = Dictionary.new
+  describe '#total_number_of_definitions' do
+    it 'gets total # of definitions' do
+      dictionary.add('Door', ['Definition 1'])
+      dictionary.add('Bell', ['Definition 2', 'Definition 3'])
+      dictionary.add('Table', ['Definition 4'])
 
-    dictionary.add('Dog', [])
-    dictionary.add('Bird', [])
-    dictionary.add('Duck', [])
-
-    expect(dictionary.total_words).to eq(3)
+      expect(dictionary.total_number_of_definitions).to eq(4)
+    end
   end
 
-  it 'gets total # of definitions' do
-    dictionary = Dictionary.new
+  describe '#count_definitions_of_word' do
+    it 'gets # of definitions related to a word' do
+      dictionary.add('Bell', ['Definition 1', 'Definition 2', 'Definition 3'])
 
-    dictionary.add('Dog', ['Definition 1'])
-    dictionary.add('Bird', ['Definition 2', 'Definition 3'])
-    dictionary.add('Duck', ['Definition 4'])
-
-    expect(dictionary.total_definitions).to eq(4)
-  end
-
-  it 'returns nil when asking for non existent word' do
-    dictionary = Dictionary.new
-
-    expect(dictionary.definition('Dog')).to eq(nil)
-  end
-
-  it 'returns an error when storing nil key' do
-    dictionary = Dictionary.new
-
-    expect { dictionary.add('', '') }.to raise_error('Cannot store empty string')
+      expect(dictionary.count_definitions_of_word('Bell')).to eq(3)
+    end
   end
 end

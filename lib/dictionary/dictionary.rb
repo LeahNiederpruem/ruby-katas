@@ -1,42 +1,52 @@
 # frozen_string_literal: true
 
+class EmptyWordError < StandardError
+  def initialize(msg = 'Cannot store empty string or nil.')
+    super
+  end
+end
+
 class Dictionary
   def initialize
     @content = {}
   end
 
-  def definition(word)
-    content[word]&.flatten
+  def definitions(word)
+    content[word]
   end
 
-  def add(word, definition)
-    raise 'Cannot store empty string' if word.empty?
+  def add(word, definition = [])
+    raise EmptyWordError if word.empty?
 
-    content[word] = definition
-  end
+    return content[word] = [definition].flatten if content[word].nil?
 
-  def delete_word(word)
-    content.delete(word)
-  end
-
-  def delete_definition(word, definition)
-    content[word].delete(definition)
-  end
-
-  def append(word, definition)
     content[word].append(definition)
-  end
-
-  def total_words
-    content.keys.size
-  end
-
-  def total_definitions
-    content.values.flatten.size
   end
 
   def empty?
     content.empty?
+  end
+
+  def delete(word)
+    content.delete(word)
+  end
+
+  def remove_definition(word, definition)
+    content[word].delete(definition)
+
+    content[word]
+  end
+
+  def total_number_of_words
+    content.keys.size
+  end
+
+  def total_number_of_definitions
+    content.values.flatten.size
+  end
+
+  def count_definitions_of_word(word)
+    content[word].size
   end
 
   private
