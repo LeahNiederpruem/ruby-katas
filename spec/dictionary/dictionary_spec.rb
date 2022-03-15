@@ -15,9 +15,15 @@ RSpec.describe Dictionary do
     expect(dictionary).not_to be_empty
   end
 
-  it 'adds a word to the dictionary' do
-    dictionary.add('Carpet', 'a floor covering made from thick woven fabric.')
+  it 'adds a word with one definition' do
+    dictionary.add('Carpet', 'Definition 1')
 
-    expect(dictionary.definition('Carpet')).to eq('a floor covering made from thick woven fabric.')
+    expect(dictionary.definitions('Carpet')).to eq('Definition 1')
+  end
+
+  it 'adds a word with multiple definitions' do
+    dictionary.add_definitions('Carpet', ['Definition 1', 'Definition 2'])
+
+    expect(dictionary.definitions('Carpet')).to eq(['Definition 1', 'Definition 2'])
   end
 end

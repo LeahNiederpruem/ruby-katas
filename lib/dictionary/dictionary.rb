@@ -5,12 +5,16 @@ class Dictionary
     @content = {}
   end
 
-  def definition(word)
+  def definitions(word)
     content[word]
   end
 
   def add(word, definition = '')
     content[word] = definition
+  end
+
+  def add_definitions(word, definitions)
+    content[word] = definitions
   end
 
   def empty?
