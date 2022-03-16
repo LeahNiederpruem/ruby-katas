@@ -15,6 +15,8 @@ class NameNormalizer
     "#{surname}, #{name} #{parse_middlename(middle)}."
   end
 
+  private
+
   def parse_middlename(middle)
     middlenames = []
     middle.each do |name|
