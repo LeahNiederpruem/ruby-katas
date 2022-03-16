@@ -20,7 +20,7 @@ class NameNormalizer
   def parse_middlename(middle)
     middlenames = []
     middle.each do |name|
-      middlenames.append(name[0])
+      middlenames.append(name.strip[0])
     end
     middlenames.join('. ')
   end
