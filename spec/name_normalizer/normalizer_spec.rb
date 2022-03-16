@@ -26,6 +26,6 @@ RSpec.describe NameNormalizer do
   end
 
   it 'accounts multiple middle names' do
-    expect(normalizer.normalize('Linus', 'Torvalds', %w[Benedict Some Name])).to eq('Torvalds, Linus B. S. N.')
+    expect(normalizer.normalize('Linus', 'Torvalds', 'Benedict Some Name')).to eq('Torvalds, Linus B. S. N.')
   end
 end
