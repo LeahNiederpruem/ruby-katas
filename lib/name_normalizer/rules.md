@@ -1,0 +1,9 @@
+- Returns empty string given an empty string or null
+- Returns a single-word name (mononym) straight-up (e.g. “Plato”)
+- Swaps first and last names (“Haruki Murakami” => “Murakami, Haruki”)
+- Trims leading & trailing whitespace
+- Initializes the middle name (“Langr, Jeffrey J.”)
+- Does not initialize a single-letter middle name (“Truman, Harry S”… the only one I can think of)
+- Initializes each of multiple middle names (“Louis-Dreyfus, Julia S. E.”)
+- Appends suffixes to end (“King, Martin L., Jr.”)
+- Throws when name contains two commas (e.g. “Thurston, Howell, III”)
